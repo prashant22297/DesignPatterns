@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 public class SingletonTest {
-    public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, IOException, ClassNotFoundException {
+    public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, IOException, ClassNotFoundException, CloneNotSupportedException {
         SingletonDesignLazy singletonDesignLazy = SingletonDesignLazy.getSingletonDesign();
         SingletonDesignLazy singletonDesignLazy1 = SingletonDesignLazy.getSingletonDesign();
         System.out.println(singletonDesignLazy.hashCode());
@@ -53,5 +53,8 @@ Solution : --> Implement the readResolve method to return the current singleton 
 //        System.out.println(singletonDesignLazy2.hashCode());
 
 //        3.Cloining of object
+
+        SingletonDesignLazy singletonDesignLazy2 = (SingletonDesignLazy) singletonDesignLazy.clone();
+        System.out.println(singletonDesignLazy2.hashCode());
     }
 }

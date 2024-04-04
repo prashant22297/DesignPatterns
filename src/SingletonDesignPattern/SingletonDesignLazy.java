@@ -3,7 +3,7 @@ package SingletonDesignPattern;
 import java.io.Serializable;
 
 //Singleton Design Pattern using Lazy Initilization
-public class SingletonDesignLazy implements Serializable {
+public class SingletonDesignLazy implements Serializable, Cloneable {
     private static SingletonDesignLazy singletonDesignLazy;
 
     private SingletonDesignLazy() {
@@ -21,6 +21,14 @@ public class SingletonDesignLazy implements Serializable {
     //    This method is for avoidign the break in singleton while deserilization
     private Object readResolve() {
         return singletonDesignLazy;
+    }
+
+    //    This method is used to avoid the break in singleton while cloning
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return singletonDesignLazy;
+//        Below line is used for cloning an object
+//        return super.clone();
     }
 }
 //Advatages:-->
